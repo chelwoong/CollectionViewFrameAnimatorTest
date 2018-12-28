@@ -71,7 +71,6 @@ extension ViewController {
             
             switch self.nextState {
             case .collapsed:
-                
                 // Comment and uncomment the below line and run.
                 self.cv.collectionView?.frame = collectionViewCollapsedFrame
             
@@ -79,7 +78,6 @@ extension ViewController {
                 self.collapsedConstraint?.isActive = true
                 
             case .expanded:
-                
                 // Comment and uncomment the below line and run.
                 self.cv.collectionView?.frame = collectionViewExpandedFrame
                 

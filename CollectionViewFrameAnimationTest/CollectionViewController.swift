@@ -116,6 +116,6 @@ class CollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         line.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 2)
-    }
+    } 
 }
 
