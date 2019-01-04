@@ -31,7 +31,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var frameAnimator: UIViewPropertyAnimator!
 
     
-    let cv = CollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+    let cv = CollectionViewController()
     
     func setupChildVC() {
         
@@ -42,7 +42,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         cvView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(cvView)
         
-        view.layoutSubviews()
+        //view.layoutSubviews()
         
         expandedConstraint = cvView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15)
         collapsedConstraint = NSLayoutConstraint(item: cvView, attribute: .top, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .centerY, multiplier: 1, constant: 0)

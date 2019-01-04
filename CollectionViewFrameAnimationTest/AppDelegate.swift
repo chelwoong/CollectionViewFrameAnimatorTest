@@ -18,8 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        let vc = ViewController()
+        let navigationController = UINavigationController(rootViewController: vc)
+        window?.rootViewController = navigationController
         
+        let tc = TransitionCoordinator(navigationController: navigationController, viewController: vc)
+        navigationController.delegate = tc
         
         return true
     }

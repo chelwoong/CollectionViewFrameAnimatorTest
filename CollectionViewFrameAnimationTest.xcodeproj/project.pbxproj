@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1741167321DED5A6002D9D8C /* TransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741167221DED5A6002D9D8C /* TransitionCoordinator.swift */; };
+		1741167521DED627002D9D8C /* TransitionDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741167421DED627002D9D8C /* TransitionDriver.swift */; };
 		17FB664821D5F47800A7FE12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FB664721D5F47800A7FE12 /* AppDelegate.swift */; };
 		17FB664A21D5F47800A7FE12 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FB664921D5F47800A7FE12 /* CollectionViewController.swift */; };
 		17FB664F21D5F47B00A7FE12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17FB664E21D5F47B00A7FE12 /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1741167221DED5A6002D9D8C /* TransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionCoordinator.swift; sourceTree = "<group>"; };
+		1741167421DED627002D9D8C /* TransitionDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDriver.swift; sourceTree = "<group>"; };
 		17FB664421D5F47800A7FE12 /* CollectionViewFrameAnimationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewFrameAnimationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17FB664721D5F47800A7FE12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17FB664921D5F47800A7FE12 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +39,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1741167121DED580002D9D8C /* Transition Files */ = {
+			isa = PBXGroup;
+			children = (
+				1741167221DED5A6002D9D8C /* TransitionCoordinator.swift */,
+				1741167421DED627002D9D8C /* TransitionDriver.swift */,
+			);
+			path = "Transition Files";
+			sourceTree = "<group>";
+		};
 		17FB663B21D5F47700A7FE12 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +71,7 @@
 				17FB665921D5F69300A7FE12 /* ViewController.swift */,
 				17FB665B21D5F84700A7FE12 /* Animations.swift */,
 				17FB664921D5F47800A7FE12 /* CollectionViewController.swift */,
+				1741167121DED580002D9D8C /* Transition Files */,
 				17FB664E21D5F47B00A7FE12 /* Assets.xcassets */,
 				17FB665321D5F47B00A7FE12 /* Info.plist */,
 			);
@@ -136,6 +150,8 @@
 				17FB665A21D5F69300A7FE12 /* ViewController.swift in Sources */,
 				17FB664A21D5F47800A7FE12 /* CollectionViewController.swift in Sources */,
 				17FB665C21D5F84700A7FE12 /* Animations.swift in Sources */,
+				1741167521DED627002D9D8C /* TransitionDriver.swift in Sources */,
+				1741167321DED5A6002D9D8C /* TransitionCoordinator.swift in Sources */,
 				17FB664821D5F47800A7FE12 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -37,7 +37,7 @@ extension ViewController {
             break
         }
     }
-
+    
     func startInteractiveStateTransition(gestureRecognizer: UIPanGestureRecognizer, state: state, duration: TimeInterval) {
         
         if runningAnimations.isEmpty {
@@ -61,26 +61,33 @@ extension ViewController {
         var collectionViewCollapsedFrame: CGRect!
         var collectionViewExpandedFrame: CGRect!
         
-         frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 2) {
+        frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 2) {
             [unowned self] in
             
-            collectionViewCollapsedFrame = CGRect(x: 0, y: 30, width: self.view.frame.width, height: (self.view.frame.height / 2) - 30 - 65)
+            collectionViewCollapsedFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: (self.view.frame.height / 2) - 30 - 65)
             
-            collectionViewExpandedFrame = CGRect(x: 0, y: 30, width: self.view.frame.width, height: (self.view.frame.height - 100) - 30 - 65)
+//            collectionViewCollapsedFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: (self.view.frame.height / 4))
+            
+            collectionViewExpandedFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: (self.view.frame.height) - 30 - 65 - 200)
+            
+           // collectionViewExpandedFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: (self.view.frame.height / 2))
             
             
             switch self.nextState {
             case .collapsed:
                 // Comment and uncomment the below line and run.
-                self.cv.collectionView?.frame = collectionViewCollapsedFrame
-            
+//                self.cv.collectionView?.layer.frame = collectionViewCollapsedFrame
+                self.cv.containerView.frame = collectionViewCollapsedFrame
+
+                
                 self.expandedConstraint?.isActive = false
                 self.collapsedConstraint?.isActive = true
                 
             case .expanded:
                 // Comment and uncomment the below line and run.
-                self.cv.collectionView?.frame = collectionViewExpandedFrame
-                
+                //self.cv.collectionView?.layer.frame = collectionViewExpandedFrame
+                self.cv.containerView.frame = collectionViewExpandedFrame
+
                 self.collapsedConstraint?.isActive = false
                 self.expandedConstraint?.isActive = true
                 
@@ -99,13 +106,16 @@ extension ViewController {
                     self?.expandedConstraint?.isActive = true
                     self?.expanded = true
                     
-                    self?.cv.collectionView?.frame = collectionViewExpandedFrame // desired CV frames
+                    //self?.cv.collectionView?.frame = collectionViewExpandedFrame // desired CV frames
+                    self?.cv.containerView.frame = collectionViewExpandedFrame // desired CV frames
 
                     
                 } else if position == .end {
                     self?.expanded = false
                     
-                    self?.cv.collectionView?.frame = collectionViewCollapsedFrame
+                    //self?.cv.collectionView?.frame = collectionViewCollapsedFrame
+                    self?.cv.containerView.frame = collectionViewCollapsedFrame
+
                 }
             case .expanded:
                 if position == .start {
@@ -113,19 +123,20 @@ extension ViewController {
                     self?.collapsedConstraint?.isActive = true
                     self?.expanded = false
                     
-                    self?.cv.collectionView?.frame = collectionViewCollapsedFrame
+                    //self?.cv.collectionView?.frame = collectionViewCollapsedFrame
+                   self?.cv.containerView.frame = collectionViewCollapsedFrame
 
                     
                 } else if position == .end {
                     self?.expanded = true
-                    
-                    self?.cv.collectionView?.frame = collectionViewExpandedFrame
+                    //self?.cv.collectionView?.frame = collectionViewExpandedFrame
+                    self?.cv.containerView.frame = collectionViewExpandedFrame // desired CV frames
 
                 }
             }
             
             self?.view.layoutIfNeeded()
-            print("container frame animation completed")
+            print("frame animation completed")
             self?.runningAnimations.removeAll()
             self?.frameAnimator.fractionComplete = 0
         }
@@ -172,5 +183,4 @@ extension ViewController {
             animator.continueAnimation(withTimingParameters: springParam, durationFactor: fraction)
         }
     }
-    
 }

@@ -8,32 +8,69 @@
 
 import UIKit
 
-class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.contentInset = UIEdgeInsets.zero
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.isPagingEnabled = true
+        collectionView.contentInset.top = 0
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.minimumLineSpacing = 0
+            layout.minimumInteritemSpacing = 0
+            layout.scrollDirection = .horizontal
+        }
+        return collectionView
+    }()
     
     let interiorCollectionViewCellId = "collectionViewCellId"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = .lightGray
-        collectionView.isPagingEnabled = true
-        collectionView?.contentInsetAdjustmentBehavior = .never
-        collectionView.contentInset = UIEdgeInsets.zero
+        
+        view.addSubview(containerView)
+        containerView.frame = view.frame
+        containerView.addSubview(collectionView)
+        collectionView.frame = view.frame
 
-        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
+
+        if let layout = collectionView as? UICollectionViewFlowLayout {
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
             layout.scrollDirection = .horizontal
         }
         collectionView.register(InteriorCollectionView.self, forCellWithReuseIdentifier: interiorCollectionViewCellId)
+        
+        view.clipsToBounds = true
+//        view
+//
+//        collectionView?.clipsToBounds = true
+//        collectionView.addSubview(mask)
+//        collectionView?.mask = mask
+//        mask.frame = view.frame
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: interiorCollectionViewCellId, for: indexPath) as! InteriorCollectionView
         cell.cellColor = indexPath.item == 0 ? .red : .blue
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
     
@@ -57,6 +94,7 @@ class InteriorCollectionView: UICollectionViewCell, UICollectionViewDataSource, 
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets.zero
         collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.isScrollEnabled = false
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
